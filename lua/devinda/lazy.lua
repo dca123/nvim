@@ -98,7 +98,13 @@ require("lazy").setup({
 			require("alpha").setup(require("alpha.themes.dashboard").config)
 		end,
 	},
-	"lewis6991/gitsigns.nvim",
+	{
+
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
+	},
 }, {
 	install = {
 		colorscheme = { "tokyonight" },
