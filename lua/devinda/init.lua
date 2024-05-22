@@ -23,3 +23,7 @@ vim.api.nvim_create_autocmd("CursorHold", {
 		vim.diagnostic.open_float(nil, opts)
 	end,
 })
+
+vim.opt.swapfile = false
+vim.opt.mouse = ""
+vim.opt.scrolloff = 999

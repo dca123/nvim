@@ -48,7 +48,6 @@ require("lazy").setup({
 			{ "L3MON4D3/LuaSnip" }, -- Required
 		},
 	},
-	"github/copilot.vim",
 	{
 		"romgrk/barbar.nvim",
 		dependencies = {
@@ -104,6 +103,37 @@ require("lazy").setup({
 		config = function()
 			require("gitsigns").setup()
 		end,
+	},
+	{
+		"andweeb/presence.nvim",
+		opts = {
+			neovim_image_text = "btw i use neovim",
+		},
+	},
+	{
+		"sindrets/diffview.nvim",
+	},
+	{
+		"tpope/vim-fugitive",
+	},
+	{
+		"declancm/cinnamon.nvim",
+		config = function()
+			require("cinnamon").setup()
+		end,
+	},
+	{
+		"ray-x/go.nvim",
+		dependencies = { -- optional packages
+			"neovim/nvim-lspconfig",
+			"nvim-treesitter/nvim-treesitter",
+		},
+		config = function()
+			require("go").setup()
+		end,
+		event = { "CmdlineEnter" },
+		ft = { "go", "gomod" },
+		build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
 	},
 }, {
 	install = {

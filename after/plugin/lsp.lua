@@ -8,8 +8,13 @@ lsp.on_attach(function(client, bufnr)
 	vim.keymap.set("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", { buffer = bufnr })
 end)
 
--- (Optional) Configure lua language server for neovim
+-- Configure lua language server for neovim
 require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+
+-- Configure gopls language server for neovim, uses the config from go.nvim package
+local cfg = require("go.lsp").config() -- config() return the go.nvim gopls setup
+require("lspconfig").gopls.setup(cfg)
+
 lsp.ensure_installed({
 	"tsserver",
 	"jsonls",
@@ -22,7 +27,6 @@ lsp.ensure_installed({
 lsp.setup()
 
 local cmp = require("cmp")
-
 cmp.setup({
 	preselect = "item",
 	completion = {

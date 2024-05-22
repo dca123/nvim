@@ -26,3 +26,4 @@ local builtin = require("telescope.builtin")
 
 vim.keymap.set("n", "<leader><leader>", "<cmd>lua require'telescope.builtin'.find_files()<cr>", { desc = "Find files" })
 vim.keymap.set("n", "<leader>s", builtin.treesitter, { desc = "Treesitter" })
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "File grep" })
