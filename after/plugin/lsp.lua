@@ -12,8 +12,6 @@ end)
 require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
 -- Configure gopls language server for neovim, uses the config from go.nvim package
-local cfg = require("go.lsp").config() -- config() return the go.nvim gopls setup
-require("lspconfig").gopls.setup(cfg)
 
 lsp.ensure_installed({
 	"tsserver",
@@ -22,7 +20,11 @@ lsp.ensure_installed({
 	"astro",
 	"tailwindcss",
 	"rust_analyzer",
+	"gopls",
 })
+
+local cfg = require("go.lsp").config() -- config() return the go.nvim gopls setup
+require("lspconfig").gopls.setup(cfg)
 
 lsp.setup()
 
