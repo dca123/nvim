@@ -20,7 +20,34 @@ vim.api.nvim_create_autocmd("CursorHold", {
 			prefix = " ",
 			scope = "cursor",
 		}
-		vim.diagnostic.open_float(nil, opts)
+		-- Check for existing float windows before opening a new diagnostic window
+		for _, win in ipairs(vim.api.nvim_list_wins()) do
+			local config = vim.api.nvim_win_get_config(win)
+			if config.relative ~= "" then
+				return
+			end
+		end
+
+		-- Open diagnostic float window with a delay to prevent collision with hover info
+		vim.defer_fn(function()
+			vim.diagnostic.open_float(nil, opts)
+		end, 200) -- Adjust the delay (in milliseconds) as needed
+	end,
+})
+
+vim.api.nvim_create_augroup("ClearSearchHighlight", { clear = true })
+vim.api.nvim_create_autocmd("CmdlineEnter", {
+	group = "ClearSearchHighlight",
+	pattern = { "/", "\\?" },
+	callback = function()
+		vim.opt.hlsearch = true
+	end,
+})
+vim.api.nvim_create_autocmd("CmdlineLeave", {
+	group = "ClearSearchHighlight",
+	pattern = { "/", "\\?" },
+	callback = function()
+		vim.opt.hlsearch = false
 	end,
 })
 
