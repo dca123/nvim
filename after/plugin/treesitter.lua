@@ -4,6 +4,7 @@ require("nvim-treesitter.configs").setup({
 		"lua",
 		"vim",
 		"vimdoc",
+		"html",
 		"typescript",
 		"tsx",
 		"javascript",
@@ -15,9 +16,6 @@ require("nvim-treesitter.configs").setup({
 		"gosum",
 	},
 	highlight = {
-		enable = true,
-	},
-	autotag = {
 		enable = true,
 	},
 })

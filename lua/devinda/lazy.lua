@@ -60,8 +60,14 @@ require("lazy").setup({
 		opts = {
 			-- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
 			animation = true,
-			-- insert_at_start = true,
-			-- …etc.
+			insert_at_start = true,
+			icons = {
+				pinned = { button = "", filename = true },
+				filetype = {
+					enabled = true,
+					custom_colors = true,
+				},
+			},
 		},
 		version = "^1.0.0", -- optional: only update when a new 1.x version is released
 	},
@@ -83,12 +89,22 @@ require("lazy").setup({
 			})
 		end,
 	},
-	"jiangmiao/auto-pairs",
-	"windwp/nvim-ts-autotag",
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
+		config = true,
+		-- use opts = {} for passing setup options
+		-- this is equivalent to setup({}) function
+	},
+	{
+
+		"windwp/nvim-ts-autotag",
+		opts = {},
+	},
 	{
 		"olimorris/persisted.nvim",
 		config = true,
-		lazy = false,
+		lazy = true,
 	},
 	{
 		"goolord/alpha-nvim",
@@ -142,6 +158,23 @@ require("lazy").setup({
 		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
 		opts = {
 			showmode = false,
+		},
+	},
+	{
+		"mfussenegger/nvim-dap",
+	},
+	{ "rcarriga/nvim-dap-ui", dependencies = { "mfussenegger/nvim-dap", "nvim-neotest/nvim-nio" } },
+	{ "mxsdev/nvim-dap-vscode-js" },
+	{
+		"microsoft/vscode-js-debug",
+		build = "npm install --legacy-peer-deps && npx gulp vsDebugServerBundle && mv dist out",
+	},
+	{
+		"nat-418/boole.nvim",
+		opts = {
+			mappings = {
+				increment = "<C-a>",
+			},
 		},
 	},
 }, {

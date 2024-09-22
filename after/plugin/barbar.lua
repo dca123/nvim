@@ -1,4 +1,4 @@
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- Move to previous/next
@@ -23,7 +23,8 @@ map("n", "<A-w>", "<Cmd>BufferClose<CR>", opts)
 map("n", "<A-w>w", "<Cmd>BufferClose!<CR>", opts)
 -- Wipeout buffer
 --                 :BufferWipeout
--- Close commands
+-- Close command
+map("n", "<A-w>a", ":BufferCloseAllButVisible<CR>", opts)
 --                 :BufferCloseAllButCurrent
 --                 :BufferCloseAllButPinned
 --                 :BufferCloseAllButCurrentOrPinned

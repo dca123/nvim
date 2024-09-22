@@ -1,5 +1,4 @@
 local lsp = require("lsp-zero").preset({})
-
 lsp.on_attach(function(client, bufnr)
 	-- see :help lsp-zero-keybindings
 	-- to learn the available actions
@@ -14,7 +13,8 @@ require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 -- Configure gopls language server for neovim, uses the config from go.nvim package
 
 lsp.ensure_installed({
-	"tsserver",
+	"lua_ls",
+	"ts_ls",
 	"jsonls",
 	"eslint",
 	"astro",
