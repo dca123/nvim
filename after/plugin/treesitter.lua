@@ -14,6 +14,7 @@ require("nvim-treesitter.configs").setup({
 		"go",
 		"gomod",
 		"gosum",
+		"css",
 	},
 	highlight = {
 		enable = true,

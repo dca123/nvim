@@ -21,6 +21,7 @@ lsp.ensure_installed({
 	"tailwindcss",
 	"rust_analyzer",
 	"gopls",
+	"basedpyright",
 })
 
 local cfg = require("go.lsp").config() -- config() return the go.nvim gopls setup
